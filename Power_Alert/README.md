@@ -29,7 +29,7 @@ An export of my [Digi-Key](https://www.digikey.com/) project list is located in 
 
 #### MCU
 
-An Adafruit ItsyBitsy 32u4 3V 8MHz microcontroller board, product [#3675](https://www.adafruit.com/product/3675). is used given that it will run off of a Li-po cell and is reasonably priced (~$9.95).
+An Adafruit ItsyBitsy 32u4 3V 8MHz microcontroller board, product [#3675](https://www.adafruit.com/product/3675) is used given that it will run off of a Li-po cell and is reasonably priced (~$9.95). Please be aware that pin assignments vary on different versions of the Itsy Bitsy form factor board.
 
 ##### Pins Used
 
