@@ -1,6 +1,6 @@
 # Power Alert
 
-A board alerts you to a power loss. Maybe more.
+A board that alerts you to a power loss. Maybe more.
 
 ### Overview
 
