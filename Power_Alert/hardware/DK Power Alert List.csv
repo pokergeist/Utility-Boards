@@ -1,0 +1,14 @@
+﻿Index	Manufacturer Part Number	Manufacturer Name	Description	Customer Reference	Attrition %	Requested Quantity 1	Pack Quantity 1	Pack Type 1	Digi-Key Part Number 1	Unit Price 1	Extended Price 1	Minimum Order Quantity 1
+1	3675	Adafruit Industries LLC	ITSY BITSY 32U4 3V 8MHZ EVAL BRD	PwrAlert MCU		1	1	Bulk	1528-2500-ND	9.95000	$9.95	1
+2	MCP73832T-2ACI/OT	Microchip Technology	IC BATT CNTL LI-ION 1CEL SOT23-5	PwrAlert U1		1	1	Cut Tape (CT)	MCP73832T-2ACI/OTCT-ND	0.76000	$0.76	1
+3	CR1206-FX-2701ELF	Bourns Inc.	RES SMD 2.7K OHM 1% 1/4W 1206	PwrAlert R1, R2		2	2	Cut Tape (CT)	CR1206-FX-2701ELFCT-ND	0.10000	$0.20	1
+4	CR1206-JW-102ELF	Bourns Inc.	RES SMD 1K OHM 5% 1/4W 1206	PwrAlert R3		1	1	Cut Tape (CT)	118-CR1206-JW-102ELFCT-ND	0.10000	$0.10	1
+5	CR1206-JW-202ELF	Bourns Inc.	RES SMD 2K OHM 5% 1/4W 1206	PwrAlert R4		1	1	Cut Tape (CT)	CR1206-JW-202ELFCT-ND	0.10000	$0.10	1
+6	RMCF1206FT64R9	Stackpole Electronics Inc	RES 64.9 OHM 1% 1/4W 1206	PwrAlert R5		1	1	Cut Tape (CT)	RMCF1206FT64R9CT-ND	0.10000	$0.10	1
+7	PS1740P02E	TDK Corporation	BUZZER PIEZO 3V 17MM TH	PwrAlert PZ1		1	1	Bulk	445-2528-ND	0.73000	$0.73	1
+8	PS1420P02CT	TDK Corporation	BUZZER PIEZO 5V 14MM TH	PwrAlert PZ1 alternate		1	1	Cut Tape (CT)	445-2526-1-ND	0.73000	$0.73	1
+9	ECE-A1AKA470	Panasonic Electronic Components	CAP ALUM 47UF 20% 10V RADIAL	PwrAlert C1 C2		2	2	Bulk	P806-ND	0.34000	$0.68	1
+10	RS1-05-G	Adam Tech	RECEPTACLE STRIP 5P 2.54MM PITCH	PwrAlert J2		1	1	Box	2057-RS1-05-G-ND	0.41000	$0.41	1
+11	PPPC141LFBN-RC	Sullins Connector Solutions	CONN HDR 14POS 0.1 GOLD PCB	PwrAlert J1,J3		2	2	Tray	S7047-ND	0.95000	$1.90	1
+12	B2B-XH-A(LF)(SN)	JST Sales America Inc.	CONN HEADER VERT 2POS 2.5MM	PwrAlert BAT header		1	1	Bulk	455-2247-ND	0.15000	$0.15	1
+13	B2B-XH-A-GU	JST Sales America Inc.	CONN HEADER VERT 2POS 2.5MM	PwrAlert BAT alternate		1	1	Bulk	455-2946-ND	0.24000	$0.24	1
