@@ -102,5 +102,5 @@ When USB power is restored, beeping will stop, but the LED will continue to flas
 
 ### Images
 
-<img alt="Top View" src="assets/Power_Alert_v2c-top.png" width="400">  <img src="assets/Power_Alert_v2c-bot.png" alt="Bottom View" width="400" title="Bottom View">
+<img alt="Top View" src="assets/Power_Alert_v2c-top.png" width="400">  <img src="assets/Power_Alert_v2c-bot.png" alt="Bottom View" width="400" title="Bottom View"> ![Assembled](assets/Power_Alert-assembled-400.jpg)
 
