@@ -28,9 +28,11 @@ module lid() {
     down(wall_thickness) {
       difference() {
         union() {
-          cuboid([base_x, base_y, lid_height+lid_overlap],
-                 align=V_TOP, fillet=0.5, edges=EDGES_TOP);
-          cuboid([base_x+walls, base_y+walls, lid_height],
+          cuboid([base_x-walls, base_y-walls,
+                  lid_height+lid_overlap],
+                 align=V_TOP, fillet=0.5,
+                 edges=EDGES_TOP+EDGES_Z_ALL);
+          cuboid([base_x, base_y, lid_height],
                  align=V_TOP, fillet=0.5,
                  edges=EDGES_Z_ALL);
         }
@@ -38,7 +40,8 @@ module lid() {
       }
     }
 
-    cuboid([base_x-lid_overlaps, base_y-lid_overlaps,
+    cuboid([base_x-walls-lid_overlaps,
+            base_y-walls-lid_overlaps,
             lid_height+lid_overlap],
            align=V_TOP);
   }

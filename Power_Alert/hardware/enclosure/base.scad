@@ -6,9 +6,12 @@ include <BOSL/constants.scad>
 use <BOSL/shapes.scad>
 use <BOSL/transforms.scad>
 
+include <mylibs/components.scad>
+include <mylibs/mcus.scad>
+
 include <common.scad>
 
-SHOW_COMPONENTS = false;
+SHOW_COMPONENTS = true;
 
 pins_x = mm(1.700);
 pins_y = mm(1.700);
@@ -42,36 +45,26 @@ hdr_y = 2.54;
 hdr_z = 8.5;
 topHdr = topPCB + hdr_z;  // top of hdr : floor
 
-legs_x = hdr_x;
-legs_y = hdr_y;
-legs_z = 1.27;
-topHdr2 = topHdr + legs_z;
+pcbHdr_x = hdr_x;
+pcbHdr_y = hdr_y;
+pcbHdr_z = 2.5;
+topHdr2 = topHdr + pcbHdr_z;
 
 ib_x  = mm(1.400);  // ItsyBitsy MCU
 ib_y  = mm(0.700);
 ib_h  = pcb_thickness + mm(0.125);
 ib_dx = mm(0.800) - pcb_cx;
 ib_dy = -mm(0.350);
-topMCU = topHdr + 1.27 + pcb_thickness;
+topMCU = topHdr + pcbHdr_z + pcb_thickness;
 
 hdz  = topPCB;
-hdx1 = ib_dx;  // top row
-hdy1 = mm(0.900) - pcb_cy;
-hdx2 = ib_dx;  // bottom row
-hdy2 = mm(0.300) - pcb_cy;
+hdr_dx = ib_dx;
+hdr_dy = ib_dy;
 
-// when pcb doesn't seat fully
-legs_dx1 = hdx1;
-legs_dy1 = hdy1;
-legs_dx2 = hdx2;
-legs_dy2 = hdy2;
-legs_dz  = hdz+hdr_z;
-
-usb_x = mm(0.220);
-usb_y = mm(0.300);
-usb_z = 2.5;
-usb_dx = mm(0.195) - pcb_cy;
-usb_dy = ib_dy;
+// PCB headers
+pcbHdr_dx = ib_dx;
+pcbHdr_dy = mm(0.600)-pcb_cy;
+pcbHdr_dz  = hdz+hdr_z;
 
 
 $fn = 64;
@@ -83,24 +76,15 @@ if (SHOW_COMPONENTS) {
   // height marker
 //  component_rnd(4, 16, "orange", -20, 10);
 
-  // CPU
-  component_rect45(8.0, 8.0, 2.0, "darkslategrey",
-                   ib_dx+5, ib_dy, topMCU);
-  // USB port
-  component_rect(usb_x, usb_y, usb_z, "silver",
-                 usb_dx, usb_dy, topMCU);
-  pcb(ib_x, ib_y, 2, "blue",          // ItsyBitsy MCU
-      ib_dx, ib_dy, topHdr2);
-  // when pcb doesn't seat fully
-  component_rect(legs_x, legs_y, legs_z, "gold",
-                 legs_dx1, legs_dy1, legs_dz);
-  component_rect(legs_x, legs_y, legs_z, "gold",
-                 legs_dx2, legs_dy2, legs_dz);
-  // headers
-  component_rect(hdr_x, hdr_y, hdr_z, "black",
-                 hdx1, hdy1, hdz);
-  component_rect(hdr_x, hdr_y, hdr_z, "black",
-                 hdx2, hdy2, hdz);
+  ItsyBitsy(ib_dx, ib_dy, topHdr2);
+
+  // pcb pin headers
+  dip_header(pcbHdr_x, pcbHdr_y, pcbHdr_z, mm(0.6),
+             pcbHdr_dx, pcbHdr_dy, pcbHdr_dz, "white");
+  // DIP sockets
+  dip_header(hdr_x, hdr_y, hdr_z, mm(0.6),
+             hdr_dx, hdr_dy, topPCB);
+  
   // LED caps, piezo
   LED_rnd(led_dia, led_height, "red",
                 led_dx, led_dy);
@@ -113,121 +97,42 @@ if (SHOW_COMPONENTS) {
 
 difference() {
   union() {
-    pposts(pin_dia, "blue", pins_x/2, pins_y/2,
+    points(pin_dia, "blue", pins_x, pins_y,
            post_height+pin_height);
-    posts(pin_dia, pin_height, "blue", pins_x/2,
-          pins_y/2, post_height);
+    posts(pin_dia, pin_height, "blue", pins_x,
+          pins_y, post_height);
     posts(5, post_height, "blue", pins_x/2, pins_y/2, 0);
     shell();
   }
 
+  // window exterior height to center = 23.3mm.
+  // Compare with echo in method.
   window(wall_thickness+3, 8, 6, 1,
-         -(base_x-wall_thickness)/2, ib_dy, topMCU-1.75,
+         -(base_x-wall_thickness)/2, ib_dy, topMCU-3.9,
          EDGES_X_ALL);
 }
 //----------------------
 
 // modules
 
-// pointy posts
-module pposts(dia, color, dx, dy, dz) {
-  color(color) {
-    ppost(dia,  dx,  dy, dz);
-    ppost(dia,  dx, -dy, dz);
-    ppost(dia, -dx,  dy, dz);
-    ppost(dia, -dx, -dy, dz);
-  }
-}
-
-module ppost(dia, dx, dy, dz) {
-  translate([dx, dy, dz])
+//  post points
+module points(dia, color, dx, dy, dz) {
+  up(dz) 
+  color(color) 
+  grid2d(rows=2,cols=2,spacing=[dx,dy])
   cyl(d1=dia, d2=dia/2, h=dia*0.85, align=V_TOP);
 }
 
 module posts(dia, ht, color, dx, dy, dz) {
-  color(color) {
-    post(dia, ht,  dx,  dy, dz);
-    post(dia, ht,  dx, -dy, dz);
-    post(dia, ht, -dx,  dy, dz);
-    post(dia, ht, -dx, -dy, dz);
-  }
-}
-
-module post(dia, ht, dx, dy, dz) {
-  translate([dx, dy, dz])
+  up(dz)
+  color(color)
+  grid2d(rows=2,cols=2,spacing=[dx,dy])
   cyl(d=dia, h=ht, align=V_TOP);
-}
-
-module component_rect(x, y, z, color, dx, dy, dz) {
-  translate([dx, dy, dz])
-  color(color)
-  cuboid([x, y, z], align=V_TOP);
-}
-
-module component_rect45(x, y, z, color, dx, dy, dz) {
-  translate([dx, dy, dz])
-  rotate(45)
-  color(color)
-  cuboid([x, y, z], align=V_TOP);
-}
-
-module component_rnd(dia, ht, color, dx, dy) {
-  translate([dx, dy, topPCB])
-  color(color)
-  cyl(d=dia, h=ht, align=V_TOP);
-}
-
-module LED_rnd(dia, ht, color, dx, dy) {
-  translate([dx, dy, topPCB]) {
-    color(color) {
-      up(ht-dia/2)
-      sphere(d=dia);
-      cyl(d=dia, h=ht-dia/2, align=V_TOP);
-    }
-  }
-}
-
-module pcboard() {
-  up(post_height)
-  difference() {
-    color("darkorchid")
-    cuboid([pcb_x, pcb_y, pcb_thickness], align=V_TOP,
-           fillet=2, edges=EDGES_Z_ALL);
-
-    holes();
-  }
-}
-
-// generic pcb, no holes
-module pcb(x, y, fil, color, dx, dy, dz) {
-  translate([dx, dy, dz])
-  color(color)
-  cuboid([x, y, pcb_thickness], align=V_TOP,
-         fillet=fil, edges=EDGES_Z_ALL);
-}
-
-/*
-module holes (dia, dx, dy) {
-  translate([dx, dy, 0])
-  cyl(d=dia, h=pcb_thickness*2+1);
-}
-*/
-
-module holes () {
-  translate([pins_x/2, pins_y/2, 0.2])
-  cyl(d=pin_hole_dia, h=4, align=V_TOP);
-
-  translate([pins_x/2, -pins_y/2, 0.2])
-  cyl(d=pin_hole_dia, h=4, align=V_TOP);
-
-  translate([-pins_x/2, pins_y/2, 0.2])
-  cyl(d=pin_hole_dia, h=4, align=V_TOP);
-
-  translate([-pins_x/2, -pins_y/2, 0.2])
-  cyl(d=pin_hole_dia, h=4, align=V_TOP);
 }
 
 module window (x, y, z, fil, dx, dy, dz, edges) {
+  // exterior height to window center
+  echo(win_ht=wall_thickness + dz + z/2);
   translate([dx, dy, dz])
   cuboid([x, y, z], fillet=fil, align=V_TOP, 
          edges=edges);
