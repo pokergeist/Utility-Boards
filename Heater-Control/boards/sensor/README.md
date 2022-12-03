@@ -12,7 +12,10 @@ The sensor boards have been used with an Arduino Uno and protoboard shield to pr
 
 |    Date    | Status                                    |
 | :--------: | ----------------------------------------- |
+| 2022-12-03 | Redesigned Sensor board.                  |
 | 2022-12-02 | First check-in. Gerber files are pending. |
+
+As fate would have it I need more sensor boards so I revised the sensor part schematic then the board. Obsolete parts were removed. Mounting options were revised.
 
 ## Parts List
 
@@ -21,6 +24,10 @@ The sensor boards have been used with an Arduino Uno and protoboard shield to pr
 | Temperature Sensor | [1-Wire Search](https://www.digikey.com/short/5w14dwnw) |    1     |        $6.413         | See below.                                 |
 |     RJ-11 Jack     |     [43860](https://www.digikey.com/short/1ht3wp4m)     |  1 or 2  |        $0.949         |                                            |
 |        PCB         |        Zipped Gerber files for JLCPCB or PCBWay         |    5+    | (5) for $2 + shipping | Shipping speed is the biggest cost factor. |
+
+**Notes on the PCB:**
+
+The new PCB is small enough to be panelized where multiple boards are made on one panel and milled so that they snap apart. The standard minimum order is (5) 100x100mm (or smaller) boards for $2.00 plus shipping. With panelized boards you get (5) panels for a few dollars more. With (9) boards per panel you can easily get (45) individual boards for a reasonable price.
 
 **Notes regarding the temperature sensor:**
 
@@ -32,11 +39,6 @@ The old Dallas Semi DS18x20 1-Wire Temperature sensor has fallen out of favor an
 You can probably source the DS18B20 sensors cheaper on eBay or [AllElectronics.com](https://www.allelectronics.com/item/ds18b20/digital-temperature-sensor/1.html).
 
 After my stock of DS18B20s runs out I'll probably switch to a cheap I2C-based chip, but that would ruin my scheme of using cheap phone cables without regard to their connector polarity (which was a pain to check on every single cable).
-
-**Deprecated components:**
-
-* JST XH 3-pin for connecting to the old controller (now vacant)
-* 4.7kΩ pull-up resistor for use with the old controller (now vacant)
 
 <img src="assets/board-top-mfg.png" alt="sensor board" style="zoom:75%;" />
 
@@ -52,12 +54,16 @@ The DS18x20 supports parasitic power. The three terminals are:
 
 With power provided via the pulled-up DQ line, and the Vdd pin grounded, the IC operates on parasitic power. I use both leads of the inner pair for data/power line DQ and the outer pair for ground.
 
-Power is provided via a USB-C cable to the QT Py micro. The small heater is powered from the power strip which also power the USB-C cable via one of the "Always On" outlets.
+## Mounting Options
 
-The OLED display is controlled and powered via the Qwiic/STEMMA QT I2C connector on the QT Py micro.
+The new board offers multiple mounting options:
+
+* There are notches for mounting with a cable tie.
+* Two M3 holes are provided at the center and corner.
+* A sensor can be soldered on either side (or even both sides if desired).
 
 ## Schematic
 
-The schematic for the DS18B20 library part is pretty weird. I will replace it on the iteration.
+The schematic shows two sensors, U1T and B for top and bottom. This gives the option of installing a sensor top-side or bottom-side depending on how the board is mounted and the best location for the sensor.
 
 <img src="assets/schematic.png" alt="schematic" style="zoom:75%;" />
