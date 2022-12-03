@@ -10,20 +10,20 @@ The sensor boards have been used with an Arduino Uno and protoboard shield to pr
 
 ## Status
 
-|    Date    | Status                                    |
-| :--------: | ----------------------------------------- |
-| 2022-12-03 | Redesigned Sensor board.                  |
-| 2022-12-02 | First check-in. Gerber files are pending. |
+|    Date    | Status                                           |
+| :--------: | ------------------------------------------------ |
+| 2022-12-03 | Redesigned Sensor board. Ordered (5) 3x3 panels. |
+| 2022-12-02 | First check-in. Gerber files are pending.        |
 
 As fate would have it I need more sensor boards so I revised the sensor part schematic then the board. Obsolete parts were removed. Mounting options were revised.
 
 ## Parts List
 
-|        Item        |                         Part #                          | Quantity |      Price @q10       | Notes                                      |
-| :----------------: | :-----------------------------------------------------: | :------: | :-------------------: | ------------------------------------------ |
-| Temperature Sensor | [1-Wire Search](https://www.digikey.com/short/5w14dwnw) |    1     |        $6.413         | See below.                                 |
-|     RJ-11 Jack     |     [43860](https://www.digikey.com/short/1ht3wp4m)     |  1 or 2  |        $0.949         |                                            |
-|        PCB         |        Zipped Gerber files for JLCPCB or PCBWay         |    5+    | (5) for $2 + shipping | Shipping speed is the biggest cost factor. |
+|        Item        |                         Part #                          | Quantity |                     Price @q10                      | Notes                                      |
+| :----------------: | :-----------------------------------------------------: | :------: | :-------------------------------------------------: | ------------------------------------------ |
+| Temperature Sensor | [1-Wire Search](https://www.digikey.com/short/5w14dwnw) |    1     |                       $6.413                        | See below.                                 |
+|     RJ-11 Jack     |     [43860](https://www.digikey.com/short/1ht3wp4m)     |  1 or 2  |                       $0.949                        |                                            |
+|        PCB         |        Zipped Gerber files for JLCPCB or PCBWay         |    5+    | (5) for $2 + shipping<br/>(45) for $7.30 + shipping | Shipping speed is the biggest cost factor. |
 
 **Notes on the PCB:**
 
