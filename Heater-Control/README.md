@@ -12,7 +12,12 @@ The sensor boards have been used with an Arduino Uno and protoboard shield to pr
 
 |    Date    | Status                                                       |
 | :--------: | ------------------------------------------------------------ |
+| 2022-12-18 | Adding a hard pull-up for the DQ line as stability problems have been encountered. |
 | 2022-12-02 | First check-in. Gerber, enclosure, and software files pending. |
+
+One unit has worked fine, the other will either not recognize connected sensors, or the sensors do not stay on-line. The driver supports a hard pull-up provided by a P-channel MOSFET driven by a second GPIO line.
+
+Moving from a 5V MCU to a 3.3V one has probably exposed a lurking problem if the datasheet is any indication.
 
 ## The Boards
 
