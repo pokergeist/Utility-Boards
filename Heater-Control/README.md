@@ -2,7 +2,7 @@
 
 ## Intro
 
-This project uses a microcontroller to read a chain of Dallas Semiconductor DS18x20 1-Wire temperature sensors. When any of the sensors reads too low an electric heater is turned on via a "IOT" Power Strip.
+This project uses a microcontroller to read a chain of Dallas Semiconductor DS18B20 1-Wire temperature sensors. When any of the sensors reads too low an electric heater is turned on via a "IOT" Power Strip.
 
 The sensors boards are connected together with cheap phone wire cords with RJ-11 connectors on the ends. The control line to the power strip connects via a JST XH 2-pin connector to the strip's screw terminal block, which is removable for easier connection.
 
@@ -12,10 +12,13 @@ The sensor boards have been used with an Arduino Uno and protoboard shield to pr
 
 |    Date    | Status                                                       |
 | :--------: | ------------------------------------------------------------ |
+| 2022-12-23 | Changed out the 4.7kΩ pull-up resistor for a 3.3kΩ one and finished the installation. |
 | 2022-12-18 | Adding a hard pull-up for the DQ line as stability problems have been encountered. |
 | 2022-12-02 | First check-in. Gerber, enclosure, and software files pending. |
 
-One unit has worked fine, the other will either not recognize connected sensors, or the sensors do not stay on-line. The driver supports a hard pull-up provided by a P-channel MOSFET driven by a second GPIO line.
+**2022-12-23** I added the p-channel MOSFET for the strong pull-up. That didn't improve anything at all. I finally swapped out the 4.7kΩ pull-up resistor for a 3.3kΩ one since the voltage had changed from 5V to 3.3V. After that the project started working reliably with and without the strong pull-up function. I'll be adding the strong pull-up components to the board design - it will likely help with longer sensor runs.
+
+**2022-12-18** One unit has worked fine, the other will either not recognize connected sensors, or the sensors do not stay on-line. The driver supports a hard pull-up provided by a P-channel MOSFET driven by a second GPIO line.
 
 Moving from a 5V MCU to a 3.3V one has probably exposed a lurking problem if the datasheet is any indication.
 
@@ -37,7 +40,7 @@ The controller board hosts:
 
 Sensor board components:
 
-* A Dallas Semi DS18x20 1-Wire Temperature sensor
+* A Dallas Semi DS18B20 1-Wire Temperature sensor
 * a Molex RJ-11 Jack
 * Deprecated components:
   * a JST XH 3-pin for connecting to the old controller (now vacant)
