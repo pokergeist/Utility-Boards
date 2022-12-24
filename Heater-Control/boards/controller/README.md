@@ -12,7 +12,7 @@ The sensor boards have been used with an Arduino Uno and protoboard shield to pr
 
 |    Date    | Status                                                       |
 | :--------: | ------------------------------------------------------------ |
-| 2022-24-23 | Added strong pull-up MOSFET and changed pull-op resistor.    |
+| 2022-24-23 | Added strong pull-up MOSFET and changed pull-up resistor.    |
 | 2022-12-18 | Adding a strong pull-up for the DQ line as stability problems have been encountered. |
 | 2022-12-02 | First check-in. Gerber and software files pending.           |
 
