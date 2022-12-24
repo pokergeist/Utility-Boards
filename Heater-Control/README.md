@@ -1,4 +1,4 @@
-# Heater Control
+# Heater Control Project
 
 ## Intro
 
@@ -12,6 +12,7 @@ The sensor boards have been used with an Arduino Uno and protoboard shield to pr
 
 |    Date    | Status                                                       |
 | :--------: | ------------------------------------------------------------ |
+| 2022-12-24 | Updated control board files.                                 |
 | 2022-12-23 | Changed out the 4.7kΩ pull-up resistor for a 3.3kΩ one and finished the installation. |
 | 2022-12-18 | Adding a hard pull-up for the DQ line as stability problems have been encountered. |
 | 2022-12-02 | First check-in. Gerber, enclosure, and software files pending. |
