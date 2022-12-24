@@ -34,7 +34,7 @@ The new PCB is small enough to be panelized where multiple boards are made on on
 The old Dallas Semi DS18x20 1-Wire Temperature sensor has fallen out of favor and is becoming increasingly rare and costly. Items to consider regarding the Digi-Key search results linked to above:
 
 * The MAX31820  sensors are cheaper but the DS18(b)20/20 has better accuracy from +10°C to -10°C.
-* These offer 11 or 12-bit accuracy - I'm only using 10.
+* These offer 11 or 12-bit precision - I'm only using 10-bits.
 
 You can probably source the DS18B20 sensors cheaper on eBay or [AllElectronics.com](https://www.allelectronics.com/item/ds18b20/digital-temperature-sensor/1.html).
 
@@ -64,6 +64,6 @@ The new board offers multiple mounting options:
 
 ## Schematic
 
-The schematic shows two sensors, U1T and B for top and bottom. This gives the option of installing a sensor top-side or bottom-side depending on how the board is mounted and the best location for the sensor.
+The schematic shows two locations for the sensor, U1T and B for top and bottom. This gives the option of installing a sensor **on either the top or bottom side** depending on how the board is mounted and the best location for the sensor. You could install two sensors, but that is not the intention.
 
 <img src="assets/schematic.png" alt="schematic" style="zoom:75%;" />
