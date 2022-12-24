@@ -52,7 +52,11 @@ The optional 128x32 pixel 4-line I2C OLED display show individual and minimum te
 
 The Qwiic/STEMMA QT cable provide power and data to the OLED display. Order a short cable and solder one end to the display, and plug the connector end into the QT Py micro.
 
-<img src="assets/board-top-mfg.png" alt="controller board" style="zoom:75%;" />
+## Board Images
+
+![top](assets/board-top-mfg.png)
+
+![bottom](assets/board-bottom-mfg.png)
 
 ## Wiring
 
